@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banger Movies</title>
+
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0f0f0f, #000);
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    header {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: fadeDown 1s ease;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    nav .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ff4040;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px #ff4040;
+      animation: glowLogo 2s infinite alternate;
+    }
+
+    @keyframes glowLogo {
+      from { text-shadow: 0 0 10px #ff4040; }
+      to { text-shadow: 0 0 25px #ff7070, 0 0 50px #ff4040; }
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav ul li:hover {
+      color: #ff4040;
+    }
+
+    nav ul li::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ff4040;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li:hover::after {
+      width: 100%;
+    }
+
+    .search-box input {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      outline: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .search-box input:focus {
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 0 10px #ff4040;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem 3rem;
+      animation: fadeUp 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #ff4040;
+      text-shadow: 0 0 25px #ff4040;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #ccc;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    /* Movie Cards */
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .movie-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .movie-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 0 25px #ff4040;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .movie-card h3 {
+      padding: 1rem;
+      color: #fff;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .movie-card p {
+      padding: 0 1rem 1rem;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #888;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero p { font-size: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">Banger</div>
+      <ul>
+        <li>Home</li>
+        <li>Trending</li>
+        <li>Top Rated</li>
+        <li>Upcoming</li>
+      </ul>
+      <div class="search-box">
+        <input type="text" placeholder="Search movies..." />
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Banger Movies</h1>
+    <p>Discover, stream, and enjoy blockbuster hits and hidden gems — all in one stunning experience.</p>
+  </section>
+
+  <section class="movie-grid">
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SL1500_.jpg" alt="Inception">
+      <h3>Inception</h3>
+      <p>Dreams within dreams. Christopher Nolan’s mind-bending masterpiece.</p>
+    </div>
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_SL1500_.jpg" alt="Avatar">
+      <h3>Avatar</h3>
+      <p>Experience Pandora’s breathtaking world like never before.</p>
+    </div>
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/51K8ouYrHeL._AC_.jpg" alt="The Dark Knight">
+      <h3>The Dark Knight</h3>
+      <p>Witness the rise of the Dark Knight — a legend reborn.</p>
+    </div>
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/71n58Fj+fLL._AC_SL1024_.jpg" alt="Interstellar">
+      <h3>Interstellar</h3>
+      <p>A breathtaking journey beyond the stars to save humanity.</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Banger Movies — All Rights Reserved
+  </footer>
+</body>
+</html>
